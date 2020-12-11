@@ -419,16 +419,24 @@ let jobs = [
 
 
 // Code here
-
-// ??????? Need help on this one:
-
-function identifier(){
-    jobs.filter(function(element, index){
-        if (element.index === programmer){
-            return index;
+const identifier = () => {
+    return jobs.filter(function(element){
+        for (let key in element){
+            if (key === 'programmer')
+            return true;
         }
-    })
+    }) [0];
 };
+
+//MN: Someone needs to explain this one to me:
+
+// const identifier = () => {
+//     return jobs.filter(function(element){
+//         if ('programmer' in element){
+//             return true;
+//         }
+//     }) [0];
+// };
 
 
 ////////// PROBLEM 19 //////////
@@ -444,6 +452,19 @@ You should not use a for loop, but should use the filter method instead
 
 // Code here
 
+//MN: This works:
+const evens = (arr) => {
+    return arr.filter(function(element){
+        if (element % 2 === 0){
+            return true;
+        }
+    })
+};
+
+//MN: This also works:
+// const evens = (arr) => {
+//     return arr.filter(element=>element % 2 === 0);
+// };
 
 
 ////////// PROBLEM 20 //////////
@@ -460,7 +481,13 @@ You should not use a for loop, but should use the filter method instead
 */
 
 // Code here
-
+const startWithLetterA = (arr) => {
+    return arr.filter(function(element){
+        if (element.startsWith('A') || element.startsWith('a')){
+            return true;
+        }
+    })
+};
 
 
 ////////// PROBLEM 21 //////////
@@ -473,8 +500,10 @@ Make sure to use arrow functions combined with the map method
 */
 
 const formalGreeting = names => {
-    // Code here
-}
+    return names.map(function(element){
+        return `Hello, ${element}`;
+    })
+};
 
 
 
@@ -488,5 +517,7 @@ Make sure to use arrow functions combined with the reduce method
 */
 
 const productOfArray = numbers => {
-    // Code here
+    return numbers.reduce(function(acc, curr){
+        return acc * curr;
+    })
 }
